@@ -1,0 +1,34 @@
+.datepickers-container {
+  display: flex;
+  justify-content: center;
+}
+
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+}
+
+.justify-content-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.justify-content-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.datepicker-component {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px
+}
+
+.button-container {
+  padding-left: 10px
+}
+
+.datepicker {
+  width: 65px
+}
