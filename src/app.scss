@@ -1,6 +1,8 @@
 .datepickers-container {
   display: flex;
   justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 20px;
 }
 
 .justify-content-center {
@@ -20,7 +22,7 @@
 
 .datepicker-component {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-left: 10px;
   margin-right: 10px
 }
@@ -30,5 +32,9 @@
 }
 
 .datepicker {
-  width: 65px
+  width: 67px
+}
+
+.react-datepicker {
+  font-family: 'Roboto', sans-serif;
 }

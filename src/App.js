@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import DatePicker from "react-datepicker/es";
 import * as subscribing from "./subscribing.js";
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import './app.scss'
 import SubscriptionsController from "./SubscriptionsController";
+import SubscribeButton from "./SubscribeButton";
 
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
     };
 
     subscribe = () => {
-        subscribing.askPermission()
+        return subscribing.askPermission()
             .then(subscribing.subscribeUserToPush)
             .then(subscription => this.subscriptionsController.save({
                 date: this.state.date,
@@ -93,9 +93,10 @@ class App extends Component {
                         <Row>
                             <Col>
                                 <div className="justify-content-right">
-                                    <div className="datepicker-component"><Button variant="info"
-                                                                                  onClick={this.subscribe}>Notify
-                                        me!</Button>
+                                    <div className="datepicker-component">
+                                        <SubscribeButton
+                                            onClick={this.subscribe}>
+                                        </SubscribeButton>
                                     </div>
                                 </div>
                             </Col>
