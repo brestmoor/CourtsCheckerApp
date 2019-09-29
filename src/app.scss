@@ -1,8 +1,7 @@
+
 .datepickers-container {
-  display: flex;
-  justify-content: center;
   font-family: 'Roboto', sans-serif;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .justify-content-center {
@@ -13,6 +12,7 @@
 .justify-content-right {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .justify-content-space-between {
@@ -28,13 +28,93 @@
 }
 
 .button-container {
-  padding-left: 10px
+  padding: 8px 11px 8px 11px;
+  border: 0;
 }
 
 .datepicker {
   width: 67px
 }
 
+.datepicker-date {
+  width: 112px;
+  display: inline-block;
+}
+
+.datepicker-container {
+  padding: 8px
+}
+
+.datepicker-label {
+  margin-right: 10px
+}
+
 .react-datepicker {
   font-family: 'Roboto', sans-serif;
+}
+
+.subscription-cell {
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.subscriptions-table {
+  margin-top: 15px;
+  padding: 8px 11px 8px 11px
+}
+
+.active-subscriptions {
+  margin-top: 70px;
+}
+
+.active-subscriptions-label {
+  margin-left: 3px
+}
+
+.subscription-header {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 3px 23px;
+  border-bottom: 1px solid grey;
+}
+
+.subscribe-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel-subscription-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancel-subscription {
+  transition-duration: 0.2s;
+}
+
+.cancel-subscription:hover {
+  color: #f06364;
+  cursor: pointer
+}
+
+.top-bar {
+  height: 150px;
+  width: 100%;
+  margin-bottom: 40px;
+  background: rgb(11, 76, 110);
+  background: linear-gradient(54deg, rgba(11, 76, 110, 1) 0%, rgba(17, 122, 139, 1) 35%, rgba(129, 218, 237, 1) 100%);
+
+
+  display: flex;
+  align-items: center;
+  padding-left: 70px;
+  font-size: 19pt;
+  color: whitesmoke;
+}
+
+.top-bar {
+  span {
+    filter: blur(0.3px);
+  }
 }
