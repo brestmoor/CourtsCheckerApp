@@ -1,9 +1,7 @@
 import React from 'react';
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import format from 'date-fns/esm/format'
 import {FaTimes} from 'react-icons/fa'
+import Table from "react-bootstrap/Table";
 
 const ActiveSubscriptionsTable = ({subscriptions, onDelete}) => {
 
@@ -17,41 +15,47 @@ const ActiveSubscriptionsTable = ({subscriptions, onDelete}) => {
 
     const renderHeader = () => {
         return (
-            <Row className={'subscription-headers'}>
-                <Col xs={5}>Date</Col>
-                <Col xs={3}>From</Col>
-                <Col xs={3}>To</Col>
-                <Col xs={1} />
-            </Row>
+            <thead>
+            <tr className={'subscription-headers'}>
+                <td>Date</td>
+                <td>From</td>
+                <td>To</td>
+                <td/>
+            </tr>
+            </thead>
         )
     };
 
     const renderRows = (subscriptions) => {
 
-        return subscriptions.map((subscription, idx) =>
+        return <tbody>
+        {subscriptions.map((subscription, idx) =>
             renderTableRow(subscription, idx)
-        );
+        )}
+        </tbody>;
     };
 
 
     const renderTableRow = (subscription, idx) => {
         return (
-            <Row key={idx}>
-                <Col xs={5}>{format(subscription.date.toDate(), 'yyyy-MM-dd')}</Col>
-                <Col xs={3}>{formatTimeReadable(subscription.timeFrom)}</Col>
-                <Col xs={3}>{formatTimeReadable(subscription.timeTo)}</Col>
-                <Col xs={1} className='cancel-subscription-container'>
+            <tr key={idx}>
+                <td>{format(subscription.date.toDate(), 'yyyy-MM-dd')}</td>
+                <td>{formatTimeReadable(subscription.timeFrom)}</td>
+                <td>{formatTimeReadable(subscription.timeTo)}</td>
+                <td className='cancel-subscription-container'>
                     <div className="cancel-subscription" onClick={() => onDelete(subscription.id)}><FaTimes/></div>
-                </Col>
-            </Row>
+                </td>
+            </tr>
         )
     };
 
     return (
-        <Card className={'subscriptions-table'}>
-            {renderHeader()}
-            {renderRows(subscriptions)}
-        </Card>
+        <div className={'subscriptions-table'}>
+            <Table>
+                {renderHeader()}
+                {renderRows(subscriptions)}
+            </Table>
+        </div>
     );
 };
 
