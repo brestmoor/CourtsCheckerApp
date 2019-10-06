@@ -13,14 +13,15 @@ import {ToastProvider, useToasts} from "react-toast-notifications";
 import getSubscriptionsController from "./SubscriptionsController";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import {convertToCET, getDateWithHour, getDayDateFor} from "./dateUtils";
 
 
 const App = () => {
     const subscriptionsController = getSubscriptionsController();
 
-    const [date, setDate] = useState(new Date());
-    const [fromTime, setFromTime] = useState(new Date(2000, 1, 1, 17, 0));
-    const [toTime, setToTime] = useState(new Date(2000, 1, 1, 21, 0));
+    const [date, setDate] = useState(getDayDateFor(new Date()));
+    const [fromTime, setFromTime] = useState(getDateWithHour(new Date(), 17));
+    const [toTime, setToTime] = useState(getDateWithHour(new Date(), 19));
     const [subscriptions, setSubscriptions] = useState([]);
 
     const {addToast} = useToasts();
@@ -32,6 +33,7 @@ const App = () => {
                 date: date,
                 fromTime: {hour: fromTime.getHours(), minute: fromTime.getMinutes()},
                 toTime: {hour: toTime.getHours(), minute: toTime.getMinutes()},
+                fromTimeDate: convertToCET(getDateWithHour(date, fromTime.getHours(), fromTime.getMinutes())),
                 expired: false,
                 subscription: JSON.parse(JSON.stringify(subscription))
             }))
@@ -47,8 +49,8 @@ const App = () => {
                     setSubscriptions(activeSubscriptions.docs.map(
                         sub => ({
                                 id: sub.id,
-                                timeFrom: sub.data().fromTime,
-                                timeTo: sub.data().toTime,
+                                fromTime: sub.data().fromTime,
+                                toTime: sub.data().toTime,
                                 date: sub.data().date
                             }
                         ))

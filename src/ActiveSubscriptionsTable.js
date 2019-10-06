@@ -40,8 +40,8 @@ const ActiveSubscriptionsTable = ({subscriptions, onDelete}) => {
         return (
             <tr key={idx}>
                 <td>{format(subscription.date.toDate(), 'yyyy-MM-dd')}</td>
-                <td>{formatTimeReadable(subscription.timeFrom)}</td>
-                <td>{formatTimeReadable(subscription.timeTo)}</td>
+                <td>{formatTimeReadable(subscription.fromTime)}</td>
+                <td>{formatTimeReadable(subscription.toTime)}</td>
                 <td className='cancel-subscription-container'>
                     <div className="cancel-subscription" onClick={() => onDelete(subscription.id)}><FaTimes/></div>
                 </td>

@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import {convertToCET} from "./dateUtils";
 
 class SubscriptionsController {
     constructor() {
@@ -30,6 +31,7 @@ class SubscriptionsController {
         return this.db.collection("subscriptions")
             .where('subscription.keys.auth', '==', auth)
             .where('expired', '==', false)
+            .where('fromTimeDate', '>=', new Date())
             .get()
     }
 }
